@@ -2,7 +2,7 @@
 title: "Self-reported life satisfaction, 2011 to 2023"
 subtitle: "Replicating the Our World in Data Grapher"
 author: "YOUR NAME HERE" # Remember to add your name!
-date: "24-07-2024"
+date: "16-10-2024"
 theme: united
 ---
 
