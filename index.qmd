@@ -1,7 +1,7 @@
 ---
 title: "Self-reported life satisfaction, 2011 to 2023"
 subtitle: "Replicating the Our World in Data Grapher"
-author: "YOUR NAME HERE" # Remember to add your name!
+author: "Sisay Wondaya Adall" # Remember to add your name!
 date: "16-10-2024"
 theme: united
 ---
@@ -57,7 +57,16 @@ The main life evaluation question asked in the poll is the Cantril Life Ladder q
 
 # Create table
 
-"WRITE_YOUR_CODE_HERE"
+cantri_wider<-cantril %>% 
+  filter(Year %in% c(2011, 2023)) %>%
+  pivot_wider(names_from = `Year`, values_from = `Cantril ladder score`, id_cols = Country) %>%
+  mutate(
+    Absolute_Change = round((`2023`-`2011`), 3), 
+    Relative_Change = round(((`2023`-`2011`) / `2011`), 3)) %>%
+  mutate(across(5, percent)) 
+
+ reactable(cantri_wider)
+  
 ```
 
 
@@ -107,7 +116,19 @@ cantril %>%
 # Note that your chart will not have the ability to filter countries like the one on the Our World in Data page.
 
 # Create line chart
-"WRITE_YOUR_CODE_HERE"
+cantril_mini <- cantril %>%
+  filter(Country %in% c("India","China","Ghana","Ethiopia","Norway", "Australia" )) 
+
+# ggplot
+line_chart<-ggplot(cantril_mini, aes(x = Year, y = `Cantril ladder score`, col = Country, group = Country)) +
+  geom_line() +  # Add lines
+  scale_y_continuous(limits=c(0,10))+
+   labs(title = "Satisfaction score of country over time: 2011-2023",
+       x = "Year",
+       y = "Cantril ladder score",
+       color = "Country") +  # Label for the color legend
+  theme_minimal() 
+ggplotly(line_chart)
 ```
 
 ## 📈 Advanced Chart
