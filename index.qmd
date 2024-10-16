@@ -37,7 +37,7 @@ cantril <-
   rename(Country = Entity)
 ```
 
-### Happiness across the world over time
+## Happiness across the world over time
 
 The World Happiness Report is a well-known source of cross-country data on self-reported life satisfaction, collected by the Gallup World Poll. The visualizations below present the ‘happiness scores’ for each country, published these reports.
 
